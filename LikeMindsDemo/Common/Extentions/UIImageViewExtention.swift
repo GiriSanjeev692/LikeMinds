@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import UIKit
+
+extension UIImageView {
+    
+    func loadImage(urlStr: String) {
+        guard let url = URL.init(string: urlStr) else { return}
+        let imageLoader = ImageLoader()
+        imageLoader.loadImage(from: url) { [weak self] image in
+            self?.image = image
+        }
+    }
+}
